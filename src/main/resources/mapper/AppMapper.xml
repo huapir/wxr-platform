@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lb.wxr.platform.dao.AppMapper">
+	<insert id="insert">
+		insert platform_app
+		(
+		appID,
+		appsecret,
+		activated,
+		deleted
+		)
+		values
+		(
+		#{appID},
+		#{appsecret},
+		#{activated},
+		1
+		)
+	</insert>
+	<update id="update">
+		update platform_app set
+		appID = #{appID},
+		appsecret = #{appsecret},
+		activated = #{activated}
+		<where>
+			activated = 1
+			and id = #{id}
+		</where>
+	</update>
+	<select id="select" resultType="cn.lb.wxr.platform.model.PlatformApp">
+		select id,appID,appsecret,activated
+		<where>
+			activated = 1
+			and id = #{id}
+		</where>
+	</select>
+	
+	<select id="selectList" resultType="cn.lb.wxr.platform.model.PlatformApp">
+		select id,appID,appsecret,activated
+		<where>
+			activated = 1
+		</where>
+	</select>
+	
+	<select id="delete">
+		update platform_app
+		set isdeleted = 2
+		<where>
+			id = #{id}
+		</where>
+	</select>
+</mapper>
