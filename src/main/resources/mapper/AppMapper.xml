@@ -4,41 +4,46 @@
 	<insert id="insert">
 		insert platform_app
 		(
+		name,
 		appID,
 		appsecret,
+		description,
 		activated,
 		deleted
 		)
 		values
 		(
+		#{name},
 		#{appID},
 		#{appsecret},
+		#{description},
 		#{activated},
 		1
 		)
 	</insert>
 	<update id="update">
 		update platform_app set
+		name = #{name},
 		appID = #{appID},
 		appsecret = #{appsecret},
-		activated = #{activated}
+		description = #{description}
 		<where>
-			activated = 1
+			deleted = 1
 			and id = #{id}
 		</where>
 	</update>
 	<select id="select" resultType="cn.lb.wxr.platform.model.PlatformApp">
-		select id,appID,appsecret,activated
+		select id,name,appID,appsecret,activated,description from platform_app
 		<where>
-			activated = 1
+			deleted = 1
 			and id = #{id}
 		</where>
 	</select>
 	
-	<select id="selectList" resultType="cn.lb.wxr.platform.model.PlatformApp">
-		select id,appID,appsecret,activated
+	<select id="selectByPage" resultType="cn.lb.wxr.platform.model.PlatformApp">
+		select id,name,appID,appsecret,activated,description from platform_app
 		<where>
-			activated = 1
+			deleted = 1
 		</where>
 	</select>
 	
@@ -46,7 +51,8 @@
 		update platform_app
 		set isdeleted = 2
 		<where>
-			id = #{id}
+			deleted = 1
+			and id = #{id}
 		</where>
 	</select>
 </mapper>
