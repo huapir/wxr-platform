@@ -11,13 +11,13 @@ import cn.lb.wxr.platform.model.PlatformApp;
 import cn.lb.wxr.platform.service.IAppService;
 
 @Service
-public class AppServiceImpl extends AbstractBaseServiceImpl<PlatformApp> implements IAppService {
+public class AppServiceImpl extends AbstractBaseServiceImpl<PlatformApp, Integer> implements IAppService {
 
 	@Resource
 	private AppMapper appMapper;
 
 	@Override
-	public BaseMapper<PlatformApp> getBaseMapper() {
+	public BaseMapper<PlatformApp, Integer> getBaseMapper() {
 		return appMapper;
 	}
 }

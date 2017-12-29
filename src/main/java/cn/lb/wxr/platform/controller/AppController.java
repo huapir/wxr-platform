@@ -26,7 +26,7 @@ public class AppController {
 	@ApiOperation("新增微信公众号应用信息")
 	@RequestMapping(value = "add", method = RequestMethod.POST)
 	@ResponseBody
-	public APIResult<Integer> add(
+	public APIResult<Boolean> add(
 			@ApiParam(name = "name", value = "app名称", required = true)
 			@RequestParam(value = "name")
 			String name,
