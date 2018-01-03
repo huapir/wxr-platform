@@ -26,6 +26,7 @@
 		name = #{name},
 		appID = #{appID},
 		appsecret = #{appsecret},
+		activated = #{activated},
 		description = #{description}
 		<where>
 			deleted = 1
@@ -47,12 +48,14 @@
 		</where>
 	</select>
 	
-	<select id="delete">
+	<update id="deleteBatchIds">
 		update platform_app
-		set isdeleted = 2
+		set deleted = 2
 		<where>
 			deleted = 1
-			and id = #{id}
+			<foreach collection="ids" item="id" open="and id in (" close=")" separator=",">
+			#{id}
+			</foreach>
 		</where>
-	</select>
+	</update>
 </mapper>
