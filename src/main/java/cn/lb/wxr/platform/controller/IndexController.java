@@ -9,7 +9,7 @@ public class IndexController {
 
 	@RequestMapping(value = "/index",method = RequestMethod.GET)
 	public String toIndex() {
-		return "wxr/index";
+		return "platform/index";
 	}
 	
 }

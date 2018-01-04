@@ -18,7 +18,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @Controller
-@RequestMapping("wxr/app/")
+@RequestMapping("wxr/platform/app/")
 public class AppController {
 
 	@Resource
