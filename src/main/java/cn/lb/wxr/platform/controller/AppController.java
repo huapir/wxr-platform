@@ -21,14 +21,14 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 
 @Controller
-@RequestMapping("wxr/platform/app/")
+@RequestMapping("wxr/platform/app")
 public class AppController {
 
 	@Resource
 	private IAppService appService;
 	
 	@ApiOperation("新增微信公众号应用信息")
-	@RequestMapping(value = "add", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.POST)
 	@ResponseBody
 	public APIResult<Boolean> add(
 			@ApiParam(name = "name", value = "app名称", required = true)
@@ -53,9 +53,9 @@ public class AppController {
 	}
 	
 	@ApiOperation("分页查询微信公众号应用信息")
-	@RequestMapping(value = "list", method = RequestMethod.GET)
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
-	public APIPageResult<List<PlatformApp>> query(
+	public APIPageResult<List<PlatformApp>> list(
 			@ApiParam(name = "keyword", value = "关键字")
 			@RequestParam(value = "keyword", required = false)
 			String keyword,
@@ -83,7 +83,7 @@ public class AppController {
 	}
 	
 	@ApiOperation("删除微信公众号应用信息")
-	@RequestMapping(value = "remove", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.DELETE)
 	@ResponseBody
 	public APIResult<Boolean> remove(
 			@ApiParam(name = "id", value = "微信公众号id，多个以逗号,分隔", required = true)
@@ -94,7 +94,7 @@ public class AppController {
 	}
 	
 	@ApiOperation("修改微信公众号应用信息")
-	@RequestMapping(value = "modify", method = RequestMethod.POST)
+	@RequestMapping(value = "/", method = RequestMethod.PUT)
 	@ResponseBody
 	public APIResult<Boolean> modify(
 			@ApiParam(name = "id", value = "微信公众号id", required = true)
@@ -126,7 +126,7 @@ public class AppController {
 	}
 	
 	@ApiOperation("查询公众号应用信息")
-	@RequestMapping(value = "{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public APIResult<PlatformApp> remove(
 			@ApiParam(name = "id", value = "微信公众号id", required = true)
