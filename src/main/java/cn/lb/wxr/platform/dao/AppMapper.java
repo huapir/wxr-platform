@@ -6,6 +6,6 @@ import org.wisteria.web.mvc.base.BaseMapper;
 import cn.lb.wxr.platform.model.PlatformApp;
 
 @Mapper
-public interface AppMapper extends BaseMapper<PlatformApp, Integer> {
+public interface AppMapper extends BaseMapper<Integer, PlatformApp, PlatformApp> {
 
 }

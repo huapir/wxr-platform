@@ -14,8 +14,8 @@
 	            <div class="layui-inline">
 	                <label class="layui-form-label l-f-label">关键字</label>
 		            <div class="layui-input-block l-f-inupt-block">
-		            <input type="text" name="searchTitle" id="searchTitle" class="layui-input l-f-inupt l-f-inupt-w3"
-						   placeholder="请输入国家、管理局、单位、岗位、电话号码、传值、邮箱">
+		            <input type="text" name="keyword" id="keyword" class="layui-input l-f-inupt l-f-inupt-w3"
+						   placeholder="请输入应用名称、AppID">
 		            </div>
 	            </div>
 	            <div class="layui-inline">
@@ -34,13 +34,10 @@
 	        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" code="export" id="export">导出</button>
 	        <button type="button" class="layui-btn layui-btn-sm layui-btn-normal" code="add" id="add">新增</button>
         </div>
-        <div id="demo" lay-filter="datagrid"></div>
+        <div id="datagrid" lay-filter="datagrid"></div>
     </div>
 </div>
 <%@ include file="/view/common/script.jsp"%>
-<script type="text/javascript">
-$(function() {
-});
-</script>
+<script src="${ctx}/static/wxr/platform/app/appmng.js"></script>
 </body>
 </html>

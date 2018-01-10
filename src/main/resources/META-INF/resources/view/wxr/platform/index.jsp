@@ -37,14 +37,13 @@
     </div>
   </div>
   
-  <div class="layui-body">
+  <div class="layui-body" style="bottom:0;">
     <!-- 内容主体区域 -->
-    <div style="padding: 15px;">
-    	<iframe src="${ctx }/wxr/platform/app/appmng" 
+    <div>
+    	<iframe src="${ctx }/wxr/platform/app/appmng" id="mainIframe"
     		style="border:0px;width:100%;padding:0;margin:0;" scrolling="no">
     	</iframe>
     </div>
-    
   </div>
   
 </div>
@@ -52,6 +51,8 @@
 <%@ include file="/view/common/script.jsp"%>
 <script type="text/javascript">
 $(function() {
+	var _height = $(window).height() - $('.layui-header').height() - 3;
+	$('#mainIframe').height(_height);
 });
 </script>
 </body>

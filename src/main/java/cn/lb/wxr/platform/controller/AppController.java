@@ -1,5 +1,7 @@
 package cn.lb.wxr.platform.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.wisteria.core.constant.CodeConsts;
 import org.wisteria.web.APIResult;
 import org.wisteria.web.mvc.model.PageResult;
 
+import cn.lb.wxr.platform.dto.APIPageResult;
 import cn.lb.wxr.platform.model.PlatformApp;
 import cn.lb.wxr.platform.service.IAppService;
 import io.swagger.annotations.ApiOperation;
@@ -52,7 +55,11 @@ public class AppController {
 	@ApiOperation("分页查询微信公众号应用信息")
 	@RequestMapping(value = "list", method = RequestMethod.GET)
 	@ResponseBody
-	public APIResult<PageResult<PlatformApp>> query(
+	public APIPageResult<List<PlatformApp>> query(
+			@ApiParam(name = "keyword", value = "关键字")
+			@RequestParam(value = "keyword", required = false)
+			String keyword,
+			
 			@ApiParam(name = "name", value = "app名称")
 			@RequestParam(value = "name", required = false)
 			String name,
@@ -61,16 +68,18 @@ public class AppController {
 			@RequestParam(value = "appID", required = false)
 			String appID,
 			
-			@ApiParam(name = "pageNumber", value = "页号, 从1开始, 默认为1")
-            @RequestParam(value = "pageNumber", required = false, defaultValue = "1") int pageNum,
+			@ApiParam(name = "pageIndex", value = "页号, 从1开始, 默认为1")
+            @RequestParam(value = "pageIndex", required = false, defaultValue = "1") int pageIndex,
 
             @ApiParam(name = "pageSize", value = "每页行数, 默认为10")
             @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize
 	) {
 		PlatformApp record = new PlatformApp();
+		record.setKeyword(keyword);
 		record.setName(name);
 		record.setAppID(appID);
-		return APIResult.success(appService.queryByPage(record, pageNum, pageSize));
+		PageResult<PlatformApp> result = appService.queryByPage(record, pageIndex, pageSize);
+		return APIPageResult.success(result);
 	}
 	
 	@ApiOperation("删除微信公众号应用信息")
