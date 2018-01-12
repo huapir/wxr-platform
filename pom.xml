@@ -15,7 +15,4 @@
     </dependency>
   </dependencies>
   
-  <build>
-    <finalName>wxr-platform</finalName>
-  </build>
 </project>
